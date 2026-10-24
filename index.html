@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sitio personal de Ysabel Cristina Briceño Romero, docente e investigadora en Ciencias Sociales.">
+  <title>Ysabel Cristina Briceño Romero | Docente e investigadora</title>
+  <style>
+    :root {
+      --paper: #f8f6f0;
+      --paper-2: #efeee7;
+      --ink: #222b2a;
+      --muted: #586460;
+      --accent: #28685f;
+      --accent-2: #d7e6dc;
+      --line: #d8dcd4;
+      --highlight: #e7c77b;
+      --white: #fffefa;
+      --shadow: 0 16px 45px rgba(35, 49, 43, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body {
+      margin: 0; background: var(--paper); color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { color: #163f39; }
+    .skip { position: absolute; left: -9999px; top: auto; }
+    .skip:focus { left: 1rem; top: 1rem; background: white; padding: .7rem; z-index: 99; }
+    header {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(16px);
+      background: rgba(248,246,240,.92); border-bottom: 1px solid rgba(216,220,212,.9);
+    }
+    .nav-wrap { max-width: 1160px; margin: auto; padding: .85rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { text-decoration: none; color: var(--ink); font-weight: 800; letter-spacing: -.04em; font-size: .98rem; line-height: 1.15; }
+    .brand span { display: block; color: var(--muted); font-size: .72rem; font-weight: 600; letter-spacing: .04em; margin-top: .25rem; }
+    nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: .3rem; }
+    nav a { color: var(--ink); text-decoration: none; font-size: .9rem; padding: .55rem .8rem; border-radius: 999px; transition: background .2s, color .2s; }
+    nav a:hover, nav a.active { background: var(--accent-2); color: var(--accent); }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: var(--white); color: var(--ink); border-radius: 999px; padding: .55rem .85rem; font: inherit; cursor: pointer; }
+    main { overflow: hidden; }
+    .container { width: min(1060px, calc(100% - 2.5rem)); margin: 0 auto; }
+    .hero { padding: clamp(4rem, 10vw, 8.5rem) 0 5.5rem; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(250px, .65fr); gap: 4rem; align-items: center; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 800; color: var(--accent); }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.8rem); letter-spacing: -.075em; line-height: .98; margin: 1rem 0 1.4rem; max-width: 800px; }
+    .hero p { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--muted); max-width: 680px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+    .button { display: inline-flex; align-items: center; gap: .55rem; border: 1px solid var(--accent); padding: .8rem 1.1rem; border-radius: 999px; text-decoration: none; font-weight: 750; transition: transform .2s, box-shadow .2s; }
+    .button.primary { background: var(--accent); color: white; }
+    .button.secondary { color: var(--accent); background: transparent; }
+    .button:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .portrait-card { background: var(--accent-2); padding: 1.2rem; border-radius: 46% 46% 24px 24px; transform: rotate(2deg); box-shadow: var(--shadow); }
+    .portrait-inner { min-height: 330px; border: 1px solid rgba(40,104,95,.25); border-radius: 46% 46% 16px 16px; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; background: linear-gradient(155deg, rgba(255,254,250,.25), rgba(40,104,95,.09)); transform: rotate(-2deg); }
+    .portrait-mark { font-family: Georgia, serif; font-size: 7rem; line-height: .9; color: var(--accent); opacity: .8; letter-spacing: -.1em; }
+    .portrait-caption { font-size: .88rem; color: var(--ink); font-weight: 700; margin-top: 1.2rem; }
+    .small-note { font-size: .76rem; color: var(--muted); margin-top: .2rem; }
+    section { padding: 5.5rem 0; border-top: 1px solid var(--line); }
+    section.alt { background: var(--paper-2); }
+    .section-head { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; margin-bottom: 2.6rem; align-items: start; }
+    .section-label { color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-weight: 800; font-size: .76rem; padding-top: .6rem; }
+    h2 { font-size: clamp(2rem, 4vw, 3.35rem); line-height: 1.05; letter-spacing: -.055em; margin: 0; }
+    .lead { font-size: 1.1rem; color: var(--muted); max-width: 760px; margin: 1rem 0 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .soft-card { background: var(--white); border: 1px solid var(--line); border-radius: 20px; padding: 1.5rem; box-shadow: 0 8px 24px rgba(35,49,43,.035); }
+    .soft-card h3 { margin: 0 0 .5rem; font-size: 1.1rem; }
+    .soft-card p { color: var(--muted); margin: 0; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.2rem; }
+    .tag { border-radius: 999px; padding: .45rem .75rem; font-size: .83rem; font-weight: 700; background: var(--accent-2); color: var(--accent); }
+    .timeline { display: grid; gap: 1rem; }
+    .timeline-item { display: grid; grid-template-columns: 150px 1fr; gap: 1.5rem; padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
+    .timeline-item:last-child { border-bottom: 0; }
+    .date { color: var(--accent); font-size: .85rem; font-weight: 800; }
+    .timeline-item h3 { margin: 0 0 .2rem; font-size: 1.1rem; }
+    .institution { color: var(--muted); font-weight: 650; margin-bottom: .5rem; }
+    .timeline-item p { color: var(--muted); margin: .2rem 0 0; }
+    .work-filters { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.6rem; }
+    .filter { border: 1px solid var(--line); background: var(--white); border-radius: 999px; padding: .55rem .85rem; color: var(--ink); cursor: pointer; font: inherit; font-size: .85rem; }
+    .filter[aria-pressed="true"] { background: var(--accent); color: white; border-color: var(--accent); }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+    .project { display: flex; flex-direction: column; gap: .65rem; background: var(--white); border: 1px solid var(--line); border-radius: 20px; padding: 1.5rem; min-height: 225px; transition: transform .2s, box-shadow .2s; }
+    .project:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .project[hidden] { display: none; }
+    .project-meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; font-size: .78rem; color: var(--muted); }
+    .project-meta span { background: var(--paper-2); padding: .25rem .55rem; border-radius: 999px; }
+    .project h3 { margin: 0; line-height: 1.25; font-size: 1.13rem; }
+    .project p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .project .role { margin-top: auto; padding-top: .5rem; font-size: .84rem; font-weight: 800; color: var(--accent); }
+    .science-links { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+    .link-card { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.1rem 1.25rem; background: var(--white); border: 1px solid var(--line); border-radius: 16px; color: var(--ink); text-decoration: none; }
+    .link-card:hover { border-color: var(--accent); }
+    .link-card small { display: block; color: var(--muted); }
+    .arrow { color: var(--accent); font-size: 1.3rem; }
+    .recognition { display: flex; gap: 1rem; align-items: flex-start; padding: 1.4rem; background: #f5ebd2; border-radius: 18px; margin-top: 1.5rem; }
+    .recognition strong { display: block; }
+    .recognition p { margin: .25rem 0 0; color: #5c513b; }
+    .contact-row { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.5rem; }
+    footer { padding: 2rem 0; background: var(--ink); color: #f8f6f0; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    footer p { margin: 0; font-size: .85rem; color: #d5ddd8; }
+    .back-top { color: #f8f6f0; text-decoration: none; font-size: .85rem; }
+    .fade-in { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 760px) {
+      .nav-wrap { align-items: flex-start; flex-wrap: wrap; }
+      .menu-toggle { display: block; }
+      nav { display: none; width: 100%; flex-direction: column; align-items: stretch; padding-top: .5rem; }
+      nav.open { display: flex; }
+      nav a { border-radius: 12px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .portrait-card { max-width: 340px; margin: 0 auto; width: 100%; }
+      .portrait-inner { min-height: 240px; }
+      .section-head { grid-template-columns: 1fr; gap: .5rem; }
+      .about-grid, .project-grid, .science-links { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: .25rem; }
+      section { padding: 4rem 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+      .fade-in { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header>
+    <div class="nav-wrap">
+      <a class="brand" href="#inicio">Ysabel Cristina Briceño Romero<span>DOCENCIA · INVESTIGACIÓN · CULTURA</span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu" type="button">Menú ☰</button>
+      <nav id="menu" aria-label="Navegación principal">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#educacion">Educación</a>
+        <a href="#experiencia">Experiencia laboral</a>
+        <a href="#proyectos">Proyectos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="container hero" id="inicio">
+      <div class="hero-grid">
+        <div class="fade-in">
+          <div class="eyebrow">Docente e investigadora en Ciencias Sociales</div>
+          <h1>Investigar para comprender.<br><span style="color:var(--accent)">Narrar para no olvidar.</span></h1>
+          <p>Soy comunicadora social, con formación de posgrado en Ciencias Políticas y Ciencias Humanas. Me interesan las preguntas que nacen del diálogo interdisciplinar, la cultura digital, la democracia, las migraciones y la comunicación de la ciencia.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#proyectos">Explorar proyectos <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="#trayectoria">Trayectoria académica</a>
+          </div>
+        </div>
+        <aside class="portrait-card fade-in" aria-label="Presentación personal">
+          <div class="portrait-inner">
+            <div class="portrait-mark" aria-hidden="true">YB.</div>
+            <div class="portrait-caption">Humanismo, investigación y creación</div>
+            <div class="small-note">Venezolana viviendo en Colombia</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <section id="sobre-mi">
+      <div class="container">
+        <div class="section-head fade-in">
+          <div class="section-label">01 / Sobre mí</div>
+          <div><h2>Una mirada social, entre disciplinas.</h2><p class="lead">Me inspira el arte y me mueve la posibilidad de comprender la realidad social a través de rutas metodológicas diversas. Mi recorrido profesional ha conectado el periodismo, la gestión cultural, la docencia universitaria y la investigación.</p></div>
+        </div>
+        <div class="about-grid">
+          <article class="soft-card fade-in">
+            <h3>Investigar y enseñar</h3>
+            <p>Docente titular e investigadora del Programa de Comunicación Social de la Universidad Autónoma de Bucaramanga. Acompaño proyectos de investigación, semilleros y trabajos de grado.</p>
+          </article>
+          <article class="soft-card fade-in">
+            <h3>Temas que me acompañan</h3>
+            <p>Mis intereses se han desplazado entre los medios y la democracia, el discurso social, las culturas digitales, la migración y la comunicación pública de la ciencia.</p>
+            <div class="tag-list">
+              <span class="tag">Medios y democracia</span><span class="tag">Cultura digital</span><span class="tag">Migración</span><span class="tag">Comunicación de la ciencia</span>
+            </div>
+          </article>
+        </div>
+        <div class="recognition fade-in">
+          <div aria-hidden="true" style="font-size:1.7rem">✳</div>
+          <div><strong>Reconocimiento · Distinción Solar 2026</strong><p>Mención en sostenibilidad de la investigación, creación y relacionamiento con el sector externo. UNAB, Bucaramanga.</p></div>
+        </div>
+        <div class="contact-row">
+          <a class="button primary" href="mailto:ybriceno@unab.edu.co">Escríbeme por correo ↗</a>
+          <a class="button secondary" href="#trayectoria">Ver perfiles académicos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="educacion">
+      <div class="container">
+        <div class="section-head fade-in">
+          <div class="section-label">02 / Educación</div>
+          <div><h2>Formación académica</h2><p class="lead">Una trayectoria que reúne comunicación, ciencias políticas y ciencias humanas.</p></div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item fade-in"><div class="date">2007 — 2014</div><div><h3>Doctora en Ciencias Humanas</h3><div class="institution">Universidad de Los Andes · Venezuela</div></div></article>
+          <article class="timeline-item fade-in"><div class="date">1996 — 2004</div><div><h3>Magíster en Ciencias Políticas</h3><div class="institution">Universidad de Los Andes · Venezuela</div></div></article>
+          <article class="timeline-item fade-in"><div class="date">1989 — 1995</div><div><h3>Licenciada en Comunicación Social, mención Desarrollo Económico</h3><div class="institution">Universidad de Los Andes · Venezuela</div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="container">
+        <div class="section-head fade-in">
+          <div class="section-label">03 / Experiencia laboral</div>
+          <div><h2>Experiencia entre la academia, la ciencia y la cultura.</h2><p class="lead">Roles y colaboraciones que han contribuido a una práctica profesional interdisciplinar.</p></div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item fade-in"><div class="date">2014 — actualidad</div><div><h3>Docente e investigadora</h3><div class="institution">Universidad Autónoma de Bucaramanga (UNAB) · Colombia</div><p>Docente titular del Programa de Comunicación Social, coordinadora de proyectos de investigación, formadora en semilleros y directora de tesis. Cursos: Comunicación y Ciudadanía Digital, Periodismo de Datos, Comunicar Ciencia y Comunicar Migración.</p></div></article>
+          <article class="timeline-item fade-in"><div class="date">2012 · 2015 · 2020</div><div><h3>Consultora</h3><div class="institution">Red CLARA</div><p>Acompañamiento a procesos de comunicación de proyectos científicos y tecnológicos, entre ellos LA-Referencia, GISELA y LA-CoNGA Physics.</p></div></article>
+          <article class="timeline-item fade-in"><div class="date">2014</div><div><h3>Docente</h3><div class="institution">Universidad Industrial de Santander (UIS)</div><p>Docencia en el Programa de Filosofía de la Facultad de Humanidades.</p></div></article>
+          <article class="timeline-item fade-in"><div class="date">2008 — 2012</div><div><h3>Coordinadora de visibilidad e investigadora</h3><div class="institution">Corporación Parque Tecnológico de Mérida · Venezuela</div><p>Vinculación con el Centro Nacional de Cálculo Científico.</p></div></article>
+          <article class="timeline-item fade-in"><div class="date">2006 — 2008</div><div><h3>Profesora</h3><div class="institution">Universidad Cecilio Acosta</div><p>Docencia en el Programa de Comunicación Social.</p></div></article>
+          <article class="timeline-item fade-in"><div class="date">2004 — 2008</div><div><h3>Coordinadora de Divulgación Científica</h3><div class="institution">Fundación para el Desarrollo de la Ciencia y la Tecnología · Mérida, Venezuela</div><p>Diseño del concepto de la Unidad de Divulgación e iniciativas para promover el diálogo entre la comunidad científica y distintos sectores de la sociedad.</p></div></article>
+          <article class="timeline-item fade-in"><div class="date">1997 — 2004</div><div><h3>Gestora de proyectos culturales</h3><div class="institution">Instituto de Acción Cultural · Mérida, Venezuela</div><p>Coordinación de Casas y Centros Culturales en el estado Mérida y gerencia de proyectos.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="proyectos">
+      <div class="container">
+        <div class="section-head fade-in">
+          <div class="section-label">04 / Proyectos</div>
+          <div><h2>Preguntas en movimiento.</h2><p class="lead">Una selección de proyectos recientes y líneas de trabajo. Puedes filtrar por área para recorrerlos.</p></div>
+        </div>
+        <div class="work-filters" role="group" aria-label="Filtrar proyectos por área">
+          <button class="filter" type="button" aria-pressed="true" data-filter="todos">Todos</button>
+          <button class="filter" type="button" aria-pressed="false" data-filter="migracion">Migración y memoria</button>
+          <button class="filter" type="button" aria-pressed="false" data-filter="digital">Cultura digital y democracia</button>
+          <button class="filter" type="button" aria-pressed="false" data-filter="ciencia">Ciencia y tecnología</button>
+          <button class="filter" type="button" aria-pressed="false" data-filter="cultura">Cultura y patrimonio</button>
+        </div>
+        <div class="project-grid">
+          <article class="project fade-in" data-category="cultura"><div class="project-meta"><span>2027 — 2029</span><span>Cultura y territorio</span></div><h3>Especies migrantes: una aproximación estética a vivencias de humanos y no humanos</h3><p>Proyecto aprobado en convocatoria UNAB.</p><div class="role">Proyecto aprobado</div></article>
+          <article class="project fade-in" data-category="migracion"><div class="project-meta"><span>2025 — 2026</span><span>Migración y memoria</span></div><h3>El retorno desde Venezuela en familias transnacionales: narraciones femeninas de la migración circular en Colombia y España</h3><p>Estudio de las experiencias y narraciones femeninas sobre el retorno y las trayectorias migratorias.</p><div class="role">Investigadora principal</div></article>
+          <article class="project fade-in" data-category="ciencia"><div class="project-meta"><span>2025 — 2027</span><span>Cooperación internacional</span></div><h3>EL-BONGÓ Physics: E-Latin American digital hub for open growing communities in physics</h3><p>Proyecto Erasmus orientado a comunidades abiertas y crecientes en física en América Latina.</p><div class="role">Representante institucional</div></article>
+          <article class="project fade-in" data-category="digital"><div class="project-meta"><span>2024 — 2025</span><span>Opinión pública</span></div><h3>Observación electoral de la opinión pública en 280 caracteres</h3><p>Exploración de discursos y conversación pública en entornos digitales durante procesos electorales.</p><div class="role">Investigadora principal</div></article>
+          <article class="project fade-in" data-category="digital"><div class="project-meta"><span>2022 — 2024</span><span>Redes sociales</span></div><h3>Clasificación de sentimientos en Twitter: una revisión en escenarios polarizados de Colombia</h3><p>Análisis de sentimientos y conversación social en escenarios de polarización.</p><div class="role">Investigadora principal</div></article>
+          <article class="project fade-in" data-category="digital"><div class="project-meta"><span>2016 — 2019</span><span>Participación ciudadana</span></div><h3>Propuesta metodológica para el control social a los concejos municipales</h3><p>Diseño metodológico vinculado al seguimiento y control social de instituciones municipales.</p><div class="role">Investigadora principal</div></article>
+          <article class="project fade-in" data-category="cultura"><div class="project-meta"><span>2017 — 2018</span><span>Patrimonio cultural</span></div><h3>Escenarios de narración transmedia para la documentación y visibilidad del patrimonio cultural de Bucaramanga</h3><p>Exploración de formatos transmedia para documentar y hacer visible el patrimonio cultural.</p><div class="role">Investigadora principal</div></article>
+          <article class="project fade-in" data-category="digital"><div class="project-meta"><span>2016 — 2017</span><span>Datos y agendas digitales</span></div><h3>Redes sociales e investigación social: preservación de datos derivados de Twitter en agendas temáticas digitales</h3><p>Experiencia piloto en Colombia, Ecuador y Venezuela.</p><div class="role">Investigadora principal</div></article>
+          <article class="project fade-in" data-category="digital"><div class="project-meta"><span>2016 — 2017</span><span>Realidad social</span></div><h3>Las redes sociales como nuevo espacio del diálogo de agentes</h3><p>Interpretación metodológica en la construcción virtual de la realidad social.</p><div class="role">Co-investigadora</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="trayectoria">
+      <div class="container">
+        <div class="section-head fade-in">
+          <div class="section-label">Perfiles académicos</div>
+          <div><h2>Seguir la trayectoria científica.</h2><p class="lead">Enlaces a perfiles y repositorios para consultar publicaciones, producción académica y datos curriculares.</p></div>
+        </div>
+        <div class="science-links">
+          <a class="link-card fade-in" href="https://orcid.org/0000-0002-6605-6838" target="_blank" rel="noopener noreferrer"><span><strong>ORCID</strong><small>Identificador de investigadora</small></span><span class="arrow">↗</span></a>
+          <a class="link-card fade-in" href="https://scholar.google.com/citations?user=nmdAizUAAAAJ&hl=es" target="_blank" rel="noopener noreferrer"><span><strong>Google Scholar</strong><small>Publicaciones y citas</small></span><span class="arrow">↗</span></a>
+          <a class="link-card fade-in" href="https://apolo.unab.edu.co/es/persons/ysabel-cristina-brice%C3%B1o-romero/" target="_blank" rel="noopener noreferrer"><span><strong>Perfil institucional UNAB</strong><small>Trayectoria académica</small></span><span class="arrow">↗</span></a>
+          <a class="link-card fade-in" href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001626677" target="_blank" rel="noopener noreferrer"><span><strong> CvLAC · MinCiencias</strong><small>Currículo científico</small></span><span class="arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
+    <section class="alt" id="contacto">
+      <div class="container">
+        <div class="section-head fade-in">
+          <div class="section-label">Contacto</div>
+          <div><h2>Conversemos.</h2><p class="lead">Para colaboraciones académicas, proyectos de investigación o iniciativas de comunicación de la ciencia.</p>
+            <div class="contact-row"><a class="button primary" href="mailto:ybriceno@unab.edu.co">ybriceno@unab.edu.co ↗</a><a class="button secondary" href="mailto:ysabelbr@gmail.com">ysabelbr@gmail.com ↗</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container"><p>© <span id="year"></span> Ysabel Cristina Briceño Romero · Docencia, investigación y cultura.</p><a class="back-top" href="#inicio">Volver al inicio ↑</a></div></footer>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('#menu');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? 'Cerrar ✕' : 'Menú ☰';
+    });
+    document.querySelectorAll('#menu a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); toggle.textContent = 'Menú ☰';
+    }));
+    const filters = document.querySelectorAll('.filter');
+    const projects = document.querySelectorAll('.project');
+    filters.forEach(button => button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      filters.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+      projects.forEach(card => card.hidden = !(filter === 'todos' || card.dataset.category === filter));
+    }));
+    document.querySelector('#year').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('#menu a');
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    sections.forEach(section => sectionObserver.observe(section));
+  </script>
+</body>
+</html>
